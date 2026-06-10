@@ -384,11 +384,48 @@
     }
 
     @media (max-width: 700px) {
+      /* 側邊欄隱藏 */
       nav { display: none; }
-      h2  { font-size: 1rem; }
-      section { padding: 20px 16px; }
-      h2 { margin: -20px -16px 16px; }
-      .advantage-section { padding: 22px 18px; }
+
+      /* Header：logo + 標題上下排列 */
+      header { padding: 24px 20px; }
+      .header-inner {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 12px;
+      }
+      .header-inner > div:last-child { display: none; }
+      .header-logo { height: 48px; }
+      header h1 { font-size: 1.4rem; }
+      header p  { font-size: .82rem; }
+
+      /* 主要版型 */
+      .wrapper { margin: 16px auto 40px; padding: 0 12px; }
+      section  { padding: 20px 16px; }
+      h2       { font-size: 1rem; margin: -20px -16px 16px; }
+
+      /* 最大優勢 */
+      .advantage-section { padding: 22px 16px; }
+
+      /* 表格橫向捲動 */
+      .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      table { min-width: 480px; }
+
+      /* 價格區塊 */
+      .price-block {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 18px 18px;
+      }
+      .price-divider { width: 100%; height: 1px; }
+      .price-special .amount { font-size: 1.6rem; }
+
+      /* 授權卡 */
+      .license-card { flex-direction: column; gap: 10px; }
+
+      /* 公式區 */
+      .formula { font-size: .8rem; padding: 12px 14px; }
     }
   </style>
 </head>
@@ -502,7 +539,7 @@
       <h2><span class="num">三</span>第一次使用 — 初始化（只做一次）</h2>
       <p>點選選單 → <strong>「薪資系統」</strong> → <strong>「① 初始化工作表（首次使用）」</strong></p>
       <p>系統會自動幫你建立四個分頁：</p>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>分頁名稱</th><th>用途</th></tr></thead>
         <tbody>
           <tr><td>員工資料</td><td>記錄每位員工的基本資料和薪資條件</td></tr>
@@ -510,7 +547,7 @@
           <tr><td>薪資設定</td><td>公司名稱、費率、計算月份等設定</td></tr>
           <tr><td>投保薪資分級表</td><td>勞健保計算用的官方級距表（已預填）</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <div class="callout callout-teal">初始化完成後，系統會跳出說明視窗，告訴你接下來要做什麼。</div>
     </section>
 
@@ -520,7 +557,7 @@
 
       <h3>A. 填寫員工資料</h3>
       <p>前往分頁：<strong>「員工資料」</strong>，每一列填一位員工：</p>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>欄</th><th>欄位名稱</th><th>怎麼填</th><th>範例</th></tr></thead>
         <tbody>
           <tr><td>A</td><td>編號</td><td>自訂，不重複就好</td><td>E001</td></tr>
@@ -533,11 +570,11 @@
           <tr><td>H</td><td>投保薪資</td><td>填 0 = 自動對應分級表；也可手動指定金額</td><td>0 或 26400</td></tr>
           <tr><td>I</td><td>勞退自提率</td><td>員工自願多提撥勞退的比例（0～6%）</td><td>0 或 0.06</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <h3>B. 確認薪資設定</h3>
       <p>前往分頁：<strong>「薪資設定」</strong>，通常只需修改以下幾項（其餘預設值依 2026 年標準已填好）：</p>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>設定項目</th><th>說明</th><th>範例</th></tr></thead>
         <tbody>
           <tr><td>公司名稱</td><td>顯示在薪資條上方</td><td>○○服務有限公司</td></tr>
@@ -545,7 +582,7 @@
           <tr><td>結束日期</td><td>本月計算結束日</td><td>2026/06/30</td></tr>
           <tr><td>年月標籤</td><td>用來命名產生的分頁</td><td>2026-06</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <div class="callout callout-teal"><strong>每個月發薪前，記得把日期更新成當月！</strong></div>
 
       <h3>C. 投保薪資分級表</h3>
@@ -566,7 +603,7 @@
         </div>
       </div>
 
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>欄</th><th>欄位名稱</th><th>怎麼填</th><th>範例</th></tr></thead>
         <tbody>
           <tr><td>A</td><td>日期</td><td>格式 YYYY/MM/DD</td><td>2026/06/02</td></tr>
@@ -576,7 +613,7 @@
           <tr><td>E</td><td>休息(分鐘)</td><td>休息時間不計工時，預設 60 分鐘</td><td>60</td></tr>
           <tr><td>F</td><td>備註</td><td>選填</td><td>加班3h</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="callout callout-blue">
         <strong>勞基法自動警示（不需按任何按鈕）：</strong><br>
@@ -656,14 +693,14 @@
     <section id="s7">
       <h2><span class="num">七</span>刪除本月產生的報表</h2>
       <p>如果需要重新產生，可以先刪除舊的（系統都會再詢問確認，不用怕手滑）：</p>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>選單項目</th><th>動作</th></tr></thead>
         <tbody>
           <tr><td>刪除本月薪資條</td><td>刪除 <code>薪資條_YYYY-MM</code> 分頁</td></tr>
           <tr><td>刪除本月薪資總表</td><td>刪除 <code>薪資總表_YYYY-MM</code> 分頁</td></tr>
           <tr><td>刪除本月合規報告</td><td>刪除 <code>合規檢查_YYYY-MM</code> 分頁</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <div class="callout callout-teal">也可以直接重新點「產生」，系統會問你是否清除並重新產生，點「是」即可覆蓋。</div>
     </section>
 
@@ -806,7 +843,7 @@
         </div>
       </div>
 
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>項目</th><th>說明</th></tr></thead>
         <tbody>
           <tr><td>授權方式</td><td>買斷制（一次性付款）</td></tr>
@@ -815,7 +852,7 @@
           <tr><td>版本更新</td><td>購買後鎖定購買當下的版本；如需升級新功能，可另行購買升級方案</td></tr>
           <tr><td>資料所有權</td><td>完全屬於您，存在您自己的 Google 試算表，Apodevelop 無法存取</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="callout callout-blue">
         <strong>版本升級說明：</strong><br>
